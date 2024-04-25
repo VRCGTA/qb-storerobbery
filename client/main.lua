@@ -59,7 +59,7 @@ CreateThread(function()
                         if not Config.Safes[safe].robbed then
                             DrawText3Ds(Config.Safes[safe][1].xyz, Lang:t('text.try_combination'))
                             if IsControlJustPressed(0, 38) then
-                                if CurrentCops >= Config.MinimumStoreRobberyPolice then
+                                if CurrentCops >= GetMinimumStoreRobberyPolice() then
                                     currentSafe = safe
                                     if math.random(1, 100) <= 65 and not QBCore.Functions.IsWearingGloves() then
                                         TriggerServerEvent('evidence:server:CreateFingerDrop', pos)
@@ -91,7 +91,7 @@ CreateThread(function()
                                         copsCalled = true
                                     end
                                 else
-                                    QBCore.Functions.Notify(Lang:t('error.minimum_store_robbery_police', { MinimumStoreRobberyPolice = Config.MinimumStoreRobberyPolice }), 'error')
+                                    QBCore.Functions.Notify(Lang:t('error.minimum_store_robbery_police', { MinimumStoreRobberyPolice = GetMinimumStoreRobberyPolice() }), 'error')
                                 end
                             end
                         else
@@ -133,7 +133,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
         local pos = GetEntityCoords(ped)
         local dist = #(pos - Config.Registers[k][1].xyz)
         if dist <= 1 and not Config.Registers[k].robbed then
-            if CurrentCops >= Config.MinimumStoreRobberyPolice then
+            if CurrentCops >= GetMinimumStoreRobberyPolice() then
                 if usingAdvanced then
                     lockpick(true)
                     currentRegister = k
@@ -172,7 +172,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                     end
                 end
             else
-                QBCore.Functions.Notify(Lang:t('error.minimum_store_robbery_police', { MinimumStoreRobberyPolice = Config.MinimumStoreRobberyPolice }), 'error')
+                QBCore.Functions.Notify(Lang:t('error.minimum_store_robbery_police', { MinimumStoreRobberyPolice = GetMinimumStoreRobberyPolice() }), 'error')
             end
         end
     end

@@ -2,7 +2,9 @@ Config = {}
 Config.minEarn = 2000
 Config.maxEarn = 3000
 Config.RegisterEarnings = math.random(Config.minEarn, Config.maxEarn)
-Config.MinimumStoreRobberyPolice = exports['vrcgta-qb']:GetValue('MinimumStoreRobberyPolice')
+function GetMinimumStoreRobberyPolice()
+    return GetConvarInt("vrcgta:storeRobbery:minimumStoreRobberyPolice", 999)
+end
 Config.resetTime = (60 * 1000) * 45
 Config.tickInterval = 1000
 Config.stickyNoteChance = 25 -- Percent chance to get the safe code from a cash register
