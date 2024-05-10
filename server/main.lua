@@ -44,7 +44,7 @@ RegisterNetEvent('qb-storerobbery:server:takeMoney', function(register, isDone)
     -- Add any additional code you want above this comment to do whilst robbing a register, everything above the if statement under this will be triggered every 2 seconds when a register is getting robbed.
 
     if isDone then
-        Player.Functions.AddItem('blackmoney', math.random(cashA, cashB) * math.random(1, 3))
+        Player.Functions.AddItem('blackmoney', math.random(Config.minEarn, Config.maxEarn))
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['blackmoney'], 'add')
         if math.random(1, 100) <= Config.stickyNoteChance then
             local code = SafeCodes[Config.Registers[register].safeKey]
@@ -94,19 +94,18 @@ RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
         return DropPlayer(src, 'Attempted exploit abuse')
     end
 
-    Player.Functions.AddItem('blackmoney', math.random(cashA, cashB)*math.random(1, 3) )
+    Player.Functions.AddItem('blackmoney', math.random(Config.minEarn, Config.maxEarn) *math.random(2, 4) )
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['blackmoney'], 'add')
 
     local luck = math.random(1, 100)
-    local odd = math.random(1, 100)
+    local luck2 = math.random(1, 1000)
     if luck <= 10 then
-        Player.Functions.AddItem('rolex', math.random(3, 7))
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['rolex'], 'add')
-        if luck == odd then
-            Wait(500)
-            Player.Functions.AddItem('goldbar', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['goldbar'], 'add')
-        end
+        Player.Functions.AddItem('spray_essence', 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['spray_essence'], 'add')
+    end
+    if luck2 <= 1 then
+        Player.Functions.AddItem('techbook_ar', 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['techbook_ar'], 'add')
     end
 end)
 
