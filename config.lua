@@ -1,6 +1,6 @@
 Config = {}
-Config.minEarn = 15000
-Config.maxEarn = 20000
+Config.minEarn = 8000
+Config.maxEarn = 12000
 
 function GetMinimumStoreRobberyPolice()
     return GetConvarInt("vrcgta:storeRobbery:minimumStoreRobberyPolice", 999)
